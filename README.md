@@ -11,8 +11,4 @@ the **tech** page is still under construction because i'm retrieving my files lo
 
 questions, advice, or just a hello, i'm happy to chat. and if you need a host for your event, reach out.
 
-<<<<<<< HEAD
 © Ayen Mejorada
-=======
-© Ayen Mejorada
->>>>>>> b866815 (update icons hd)

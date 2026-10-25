@@ -1,38 +1,14 @@
-# Ayen Mejorada Portfolio
+# hi, i'm ayen!
 
-A static portfolio site styled as a macOS desktop. No build step: open `index.html` in a browser, or run `npx serve` in this folder.
+welcome to my portfolio, so glad you're here.
 
-## Structure
+right now my main career is all about **creatives** and **hosting**, so those are the two pages to check out first.
 
-```
-index.html        Home (hero desktop, "what i do" cards, contact)
-creatives.html    Organization timeline, Spotify songs, 20-design gallery
-hosting.html      Hosting timeline, logo marquee, 12-photo gallery
-css/              One stylesheet per page (design tokens are in :root at the top)
-js/               One script per page (smooth scroll, cursor, clock, viewers)
-assets/<page>/    All images, named by what they show
-DESIGN.md         The design system
-```
+- **creatives**: the orgs i've helped out, the music behind my work, and some of my favorite posters
+- **hosting**: events i've hosted, the orgs behind them, and a few moments from the stage
 
-## Swapping images
+the **tech** page is still under construction because i'm retrieving my files lol. it's coming soon!
 
-Replace the file in `assets/<page>/` and keep the same file name. Hero photos are `hero-*.jpg`, card photos are `card-*.jpg`, and the gallery photos are named after their content. Current images were cropped from screenshots, so they are low resolution; use your originals.
+questions, advice, or just a hello, i'm happy to chat. and if you need a host for your event, reach out.
 
-## Still placeholders
-
-- Email: `hello@ayenmejorada.com` (index.html, creatives.html, hosting.html footers and Dock)
-- Social links: generic homepages for Instagram, Facebook, LinkedIn, GitHub (index.html)
-- `tech.html` does not exist yet; the Tech card shows a "coming soon" message (see `js/index.js`)
-
-## Deploy on GitHub Pages
-
-1. Create a public repository and upload everything in this folder (keep the folder structure).
-2. Repository Settings > Pages > Build and deployment > Deploy from a branch > `main` / `(root)` > Save.
-3. After a minute the site is live at `https://<your-username>.github.io/<repo-name>/`.
-
-## Ideas for later
-
-- Pull the CSS shared by `creatives.css` and `hosting.css` into one `shared.css`.
-- Replace the long inline SVG strings in the JS with real `.svg` files.
-- Add `tech.html` in the same style as `hosting.html`.
-- Compress images and add `srcset` for sharper photos on large screens.
+© Ayen Mejorada

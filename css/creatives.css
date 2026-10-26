@@ -642,3 +642,142 @@ html.has-cur * {
     padding: 10px;
   }
 }
+
+/* branding kits: two cards, same card style as the home page; click opens a pop-up */
+.kits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 2vw, 28px);
+  padding: clamp(14px, 2vw, 24px);
+}
+.kit {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: clamp(12px, 1.6vw, 18px);
+  border: 1px solid var(--accent-line);
+  border-radius: 24px;
+  background: var(--accent-soft);
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.kit:hover {
+  transform: translateY(-4px);
+}
+.kit:active {
+  transform: scale(0.98);
+}
+.kcover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #111;
+}
+.kfoot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 4px 2px;
+}
+.klogo {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.ktext {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: var(--lh-tight);
+}
+.ktext b {
+  font-weight: var(--w-semibold);
+}
+.ktext span {
+  font-size: var(--t-label);
+  color: var(--muted);
+}
+.knote {
+  display: none;
+}
+.kbwin {
+  width: min(680px, 100%);
+  max-height: calc(100svh - 32px);
+  overflow-y: auto;
+}
+.kbwin .wbar b {
+  padding: 0 76px;
+}
+.kbwin .wbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.kbody {
+  padding: clamp(18px, 3vw, 28px);
+}
+.kbody h3 {
+  margin: 0;
+  font-size: var(--t-subheading);
+  font-weight: var(--w-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+}
+.kbody .kmeta {
+  margin: 6px 0 14px;
+  font-size: var(--t-label);
+  font-weight: var(--w-medium);
+  color: var(--accent);
+}
+.kbody p {
+  margin: 0 0 0.8em;
+}
+.kbody p:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 760px) {
+  .kits {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* kit pop-up slides */
+.kbwin .lbimg img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+.kbwin .nav {
+  display: none;
+}
+#kb.multi .nav {
+  display: grid;
+}
+.kcap {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 clamp(18px, 3vw, 28px);
+  font-size: var(--t-small);
+  font-weight: var(--w-medium);
+  color: var(--muted);
+}
+.kcap:not(:empty) {
+  padding-top: 12px;
+}
+.kcap span:last-child {
+  flex: none;
+}
+.kslides {
+  display: none;
+}

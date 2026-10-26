@@ -53,6 +53,27 @@
       el.classList.add("in");
     });
 
+  /* jump scroller: highlights the section in view */
+  var jl = [].slice.call(document.querySelectorAll("#jump a")),
+    secs = jl.map(function (a) {
+      return document.getElementById(a.dataset.s);
+    });
+  function spy() {
+    var y = innerHeight * 0.35,
+      on = -1;
+    secs.forEach(function (s, i) {
+      if (s.getBoundingClientRect().top <= y) on = i;
+    });
+    jl.forEach(function (a, i) {
+      a.classList.toggle("on", i === on);
+      if (i === on) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+  }
+  addEventListener("scroll", spy, { passive: true });
+  addEventListener("resize", spy);
+  spy();
+
   /* quick look viewer */
   var imgs = [].slice.call(document.querySelectorAll(".g img")),
     lb = document.getElementById("lb"),
@@ -136,7 +157,7 @@
   }
   function openKb(btn) {
     var note = document.getElementById(btn.getAttribute("data-note")),
-      cover = btn.querySelector(".kcover"),
+      cover = btn.querySelector(".kcover, .uimg"),
       extra = [].slice.call(note.querySelectorAll(".kslides img"));
     kopener = btn;
     kslides = extra.length ? extra : [cover];
@@ -147,6 +168,17 @@
       ks = copy.querySelector(".kslides");
     if (ks) ks.remove();
     kbb.innerHTML = copy.innerHTML;
+    if (btn.classList.contains("ux")) {
+      var v = document.createElement("a");
+      v.className = "kvisit";
+      v.innerHTML =
+        (note.getAttribute("data-label") || "View website") +
+        '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3L3 13"/></svg>';
+      v.href = note.getAttribute("data-url") || "#";
+      v.target = "_blank";
+      v.rel = "noopener";
+      kbb.appendChild(v);
+    }
     kb.querySelector(".kbwin").scrollTop = 0;
     kb.classList.add("on");
     kb.setAttribute("aria-hidden", "false");
@@ -161,7 +193,7 @@
     else document.body.style.overflow = "";
     if (kopener) kopener.focus({ preventScroll: true });
   }
-  [].forEach.call(document.querySelectorAll(".kit"), function (b) {
+  [].forEach.call(document.querySelectorAll(".kit, .ux"), function (b) {
     b.addEventListener("click", function () {
       openKb(b);
     });

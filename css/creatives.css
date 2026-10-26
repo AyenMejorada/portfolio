@@ -791,3 +791,132 @@ html.has-cur * {
 .kslides {
   display: none;
 }
+
+/* ui/ux projects: loose, gently tilted tiles (never past 2 degrees) */
+.uxgrid {
+  --rh: 235px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 32px);
+  padding: clamp(24px, 4vw, 44px) clamp(18px, 3vw, 36px);
+}
+.ux {
+  flex: none;
+  width: min(100%, calc(1.8 * var(--rh)));
+  aspect-ratio: 1.8;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  transform: rotate(var(--tilt, 0deg));
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.ux img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.ux:hover {
+  transform: translateY(-4px) rotate(calc(var(--tilt, 0deg) * 0.3));
+}
+.ux:active {
+  transform: rotate(var(--tilt, 0deg)) scale(0.98);
+}
+@media (max-width: 760px) {
+  .uxgrid {
+    --rh: 170px;
+  }
+}
+
+/* jump scroller: floating frosted pill */
+.jump {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: flex;
+  gap: 2px;
+  max-width: calc(100% - 24px);
+  padding: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow:
+    0 10px 30px rgba(40, 70, 110, 0.25),
+    0 0 0 0.5px rgba(0, 0, 0, 0.12);
+  overflow-x: auto;
+  scrollbar-width: none;
+  transform: translateX(-50%);
+}
+.jump::-webkit-scrollbar {
+  display: none;
+}
+.jump a {
+  flex: none;
+  padding: 7px 14px;
+  border-radius: 99px;
+  font-size: var(--t-small);
+  font-weight: var(--w-medium);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.jump a:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+.jump a.on {
+  background: var(--accent);
+  color: #fff;
+}
+.lenis-stopped ~ .jump,
+body:has(.lb.on) .jump {
+  display: none;
+}
+.foot {
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+/* "View website" button in the UI/UX pop-up */
+.kvisit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 10px 22px;
+  border-radius: 99px;
+  background: var(--accent);
+  color: #fff;
+  font-size: var(--t-label);
+  font-weight: var(--w-semibold);
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+a.kvisit:active {
+  transform: scale(0.95);
+}
+.kvisit svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.kvisit.off {
+  background: #e8e8ed;
+  color: var(--muted);
+  cursor: default;
+}
+.kvisit.off svg {
+  display: none;
+}

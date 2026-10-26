@@ -369,35 +369,6 @@ h2 {
   margin-top: 18px;
 }
 /* gallery */
-.grid {
-  columns: 3;
-  column-gap: 12px;
-  padding: 12px 12px 0;
-}
-.g {
-  display: block;
-  width: 100%;
-  margin: 0 0 12px;
-  padding: 0;
-  border: 0;
-  background: none;
-  break-inside: avoid;
-  cursor: pointer;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.3, 1.4, 0.5, 1);
-}
-.g img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.g:hover {
-  transform: scale(1.025);
-}
-.g:active {
-  transform: scale(0.98);
-}
 
 /* quick look */
 .lb {
@@ -615,9 +586,6 @@ html.has-cur * {
   .tl .body {
     grid-area: b;
   }
-  .grid {
-    columns: 2;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -627,5 +595,50 @@ html.has-cur * {
   .js .rv {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* poster works: every tile has the same height; width follows the poster's shape */
+.grid {
+  --rh: 230px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+}
+.g {
+  position: relative;
+  flex: none;
+  display: block;
+  height: var(--rh);
+  width: calc(var(--ar) * var(--rh));
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.g img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.g:hover {
+  transform: scale(1.025);
+}
+.g:active {
+  transform: scale(0.98);
+}
+@media (max-width: 760px) {
+  .grid {
+    --rh: 140px;
+    gap: 8px;
+    padding: 10px;
   }
 }

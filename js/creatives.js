@@ -120,6 +120,10 @@
     kcur = (i + kslides.length) % kslides.length;
     kbi.src = kslides[kcur].src;
     kbi.alt = kslides[kcur].alt;
+    kbi.parentNode.style.aspectRatio =
+      kslides[kcur].getAttribute("width") +
+      " / " +
+      kslides[kcur].getAttribute("height");
     kbc.innerHTML = "";
     if (kslides.length > 1) {
       var cap = document.createElement("span"),

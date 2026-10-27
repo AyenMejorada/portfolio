@@ -1,0 +1,62 @@
+/* tech page: extras on top of creatives.css */
+.certs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: clamp(18px, 3vw, 36px) 0;
+}
+.cert {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 22px);
+  padding: 6px clamp(18px, 3vw, 40px);
+}
+.cert + .cert {
+  border-left: 1px solid rgba(0, 0, 0, 0.18);
+}
+.cert > img {
+  flex: none;
+  width: clamp(48px, 6vw, 72px);
+  height: auto;
+}
+.cert h3 {
+  margin: 0 0 4px;
+  font-size: var(--t-label);
+  font-weight: var(--w-semibold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-heading);
+}
+.cert p {
+  margin: 0 0 4px;
+  font-size: var(--t-label);
+  line-height: var(--lh-tight);
+  color: var(--muted);
+}
+.cert a {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: var(--t-label);
+  font-weight: var(--w-medium);
+  color: var(--accent);
+  text-decoration: none;
+}
+.cert a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 760px) {
+  .certs {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .cert + .cert {
+    border-left: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    padding-top: 22px;
+  }
+}
+
+/* wider date column so "February 2026 – May 2026" stays on one line */
+@media (min-width: 761px) {
+  :root {
+    --dc: 232px;
+  }
+}

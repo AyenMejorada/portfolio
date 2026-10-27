@@ -11,21 +11,6 @@
   }
   t();
   setInterval(t, 30000);
-  var toast = document.createElement("div");
-  toast.className = "toast";
-  toast.setAttribute("role", "status");
-  document.body.appendChild(toast);
-  document.querySelectorAll('a.card[href="tech.html"]').forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      e.preventDefault();
-      toast.textContent = "This page is coming soon.";
-      toast.classList.add("on");
-      clearTimeout(toast._t);
-      toast._t = setTimeout(function () {
-        toast.classList.remove("on");
-      }, 2200);
-    });
-  });
   var reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
 
   /* smooth, inertial scrolling */

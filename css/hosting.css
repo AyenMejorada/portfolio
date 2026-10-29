@@ -449,6 +449,18 @@ h2 {
 .set img:hover {
   transform: scale(1.07);
 }
+.orglink {
+  display: block;
+  border-radius: 18px;
+  cursor: pointer;
+}
+.orglink:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+.marq:focus-within .track {
+  animation-play-state: paused;
+}
 @keyframes marq {
   to {
     transform: translateX(-50%);

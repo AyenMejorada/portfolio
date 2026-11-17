@@ -40,8 +40,42 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/index.css" />
+    <script>
+      /* intro: once per browser tab, skipped for reduced motion and deep links.
+         Add ?intro to the URL to force it while testing. */
+      (function () {
+        var r = document.documentElement;
+        try {
+          var calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+          var force = /[?&]intro\b/.test(location.search);
+          var seen = false;
+          try {
+            seen = !!sessionStorage.getItem("intro-seen");
+          } catch (e) {}
+          if (!calm && !location.hash && (force || !seen)) {
+            r.classList.add("is-intro");
+            setTimeout(function () {
+              r.classList.remove("is-intro"); /* failsafe: never trap the page */
+            }, 8000);
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
+    <div class="intro" id="intro" aria-hidden="true">
+      <div class="intro-logo">
+        <svg class="intro-write" viewBox="0 0 760 451" focusable="false">
+          <defs>
+            <mask id="intro-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="760" height="451">
+              <g id="intro-ink" fill="#fff"></g>
+            </mask>
+          </defs>
+          <image href="assets/home/logo-am.png" width="760" height="451" mask="url(#intro-mask)" />
+        </svg>
+      </div>
+    </div>
+
     <div class="menubar">
       <b>Ayen Mejorada</b>
       <span class="lnk"
@@ -356,6 +390,7 @@
       </section>
     </main>
 
+    <script src="js/intro.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="js/index.js"></script>
   </body>

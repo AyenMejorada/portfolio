@@ -982,6 +982,69 @@ html.has-cur * {
     bottom: calc(8px + env(safe-area-inset-bottom, 0px));
   }
 }
+/* ---------- intro (the logo writes itself, then the page lifts like a curtain) ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9000; /* above the page, below the custom cursor */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  background: var(--wall);
+  border-radius: 0 0 clamp(24px, 5vw, 56px) clamp(24px, 5vw, 56px);
+  transition: transform 0.95s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+html:not(.is-intro) .intro:not(.is-out) {
+  display: none;
+}
+.intro.is-out {
+  transform: translateY(-101%);
+  pointer-events: none;
+}
+.intro-logo {
+  width: clamp(230px, 62vw, 300px);
+  aspect-ratio: 1.46;
+  border-radius: 34px;
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 22px 44px rgba(232, 80, 138, 0.22),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  animation: intro-pop 0.8s 0.1s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  transition:
+    opacity 0.4s,
+    transform 0.4s;
+}
+.intro-write {
+  display: block;
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+.intro.is-out .intro-logo {
+  opacity: 0;
+  transform: translateY(-14px) scale(1.06);
+}
+@keyframes intro-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-8deg);
+  }
+}
+/* lock scroll and hold the hero's entrance animations until the curtain lifts */
+html.is-intro,
+html.is-intro body {
+  overflow: hidden;
+}
+html.is-intro .stage,
+html.is-intro .stage * {
+  animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

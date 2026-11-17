@@ -16,6 +16,8 @@
   /* smooth, inertial scrolling */
   if (window.Lenis && !reduce) {
     var lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 0.95 });
+    window.__lenis = lenis;
+    if (document.documentElement.classList.contains("is-intro")) lenis.stop(); /* resumed when the intro lifts */
     var raf = function (t) {
       lenis.raf(t);
       requestAnimationFrame(raf);

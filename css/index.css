@@ -662,6 +662,7 @@ h2 {
 }
 .card img {
   width: 100%;
+  height: auto; /* overrides the HTML height attribute so aspect-ratio works */
   aspect-ratio: 326/310;
   object-fit: cover;
   border-radius: 12px;
